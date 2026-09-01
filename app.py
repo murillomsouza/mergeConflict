@@ -5,7 +5,7 @@ app = Flask(__name__)
 #Padrao
 @app.route('/')
 def index():
-    return "Olá, Mundo! Esta é a minha primeira aplicação Flask."
+    return "Essa é minha atualização para o conflito"
 
 #Get para verificar status
 @app.route('/api/status', methods=['GET'])
