@@ -5,7 +5,7 @@ app = Flask(__name__)
 #Padrao
 @app.route('/')
 def index():
-    return "Alteração feita na minha branch"
+    return "Alteracao feita na main"
 
 @app.route('/api/status', methods=['GET'])
 def status():
@@ -45,6 +45,19 @@ def receber_dados():
 
     return jsonify({"recebido": dados}), 201
 
+@app.route('/api/usuarios', methods=['GET'])
+def listar_usuarios():
+    usuarios = [
+        {"id": 1, "nome": "Marina"},
+        {"id": 3, "nome": "Pedro"},
+        {"id": 2, "nome": "João"},
+        {"id": 5, "nome" : "Júlia"}
+
+    ]
+    return jsonify({
+        "status": "sucesso",
+        "usuarios": usuarios
+    }), 200
 
 
 
