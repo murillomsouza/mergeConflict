@@ -5,7 +5,7 @@ app = Flask(__name__)
 #Padrao
 @app.route('/')
 def index():
-    return "Essa é minha atualização para o conflito"
+    return "Alteracao feita na main"
 
 #Get para verificar status
 @app.route('/api/status', methods=['GET'])
