@@ -36,6 +36,19 @@ def buscar_usuario(usuario_id):
         "mensagem": f"Usuario {usuario_id} encontrado."
     })
 
+@app.route('/api/usuarios/buscar', methods=['GET'])
+def buscar_usuario_por_nome():
+    nome = request.args.get('nome')
+
+    if not nome:
+        return jsonify({"erro": "Informe o parametro 'nome' na URL"}), 400
+
+    return jsonify({
+        "status": "sucesso",
+        "nome_buscado": nome,
+        "mensagem": f"Buscando usuario com nome '{nome}'."
+    }), 200
+
 #Post ara enviar dados
 @app.route('/api/dados', methods=['POST'])
 def receber_dados():
