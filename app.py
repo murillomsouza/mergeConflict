@@ -34,6 +34,19 @@ def receber_dados():
 
     return jsonify({"recebido": dados}), 201
 
+@app.route('/api/usuarios', methods=['GET'])
+def listar_usuarios():
+    usuarios = [
+        {"id": 1, "nome": "Marina"},
+        {"id": 3, "nome": "Pedro"},
+        {"id": 2, "nome": "João"},
+        {"id": 5, "nome" : "Júlia"}
+
+    ]
+    return jsonify({
+        "status": "sucesso",
+        "usuarios": usuarios
+    }), 200
 
 
 
