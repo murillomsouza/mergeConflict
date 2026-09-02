@@ -7,26 +7,12 @@ app = Flask(__name__)
 def index():
     return "Alteracao feita na main"
 
-#Get para verificar status
 @app.route('/api/status', methods=['GET'])
 def status():
     return jsonify({
         "status": "OK",
         "mensagem": "A API está rodando perfeitamente!"
     })
-
-@app.route('/api/usuarios', methods=['GET'])
-def listar_usuarios():
-    usuarios = [
-        {"id": 1, "nome": "Marina"},
-        {"id": 2, "nome": "João"},
-        {"id": 3, "nome": "Pedro"}
-    ]
-    return jsonify({
-        "status": "sucesso",
-        "usuarios": usuarios
-    }), 200
-
 
 @app.route('/api/usuarios/<int:usuario_id>', methods=['GET'])
 def buscar_usuario(usuario_id):
@@ -35,6 +21,19 @@ def buscar_usuario(usuario_id):
         "usuario_id": usuario_id,
         "mensagem": f"Usuario {usuario_id} encontrado."
     })
+
+@app.route('/api/usuarios/buscar', methods=['GET'])
+def buscar_usuario_por_nome():
+    nome = request.args.get('nome')
+
+    if not nome:
+        return jsonify({"erro": "Informe o parametro 'nome' na URL"}), 400
+
+    return jsonify({
+        "status": "sucesso",
+        "nome_buscado": nome,
+        "mensagem": f"Buscando usuario com nome '{nome}'."
+    }), 200
 
 #Post ara enviar dados
 @app.route('/api/dados', methods=['POST'])
