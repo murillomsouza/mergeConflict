@@ -5,7 +5,7 @@ app = Flask(__name__)
 #Padrao
 @app.route('/')
 def index():
-    return "Essa é minha atualização para o conflito"
+    return "Alteração feita na minha branch"
 
 @app.route('/api/status', methods=['GET'])
 def status():
