@@ -7,26 +7,12 @@ app = Flask(__name__)
 def index():
     return "Essa é minha atualização para o conflito"
 
-#Get para verificar status
 @app.route('/api/status', methods=['GET'])
 def status():
     return jsonify({
         "status": "OK",
         "mensagem": "A API está rodando perfeitamente!"
     })
-
-@app.route('/api/usuarios', methods=['GET'])
-def listar_usuarios():
-    usuarios = [
-        {"id": 1, "nome": "Marina"},
-        {"id": 2, "nome": "João"},
-        {"id": 3, "nome": "Pedro"}
-    ]
-    return jsonify({
-        "status": "sucesso",
-        "usuarios": usuarios
-    }), 200
-
 
 @app.route('/api/usuarios/<int:usuario_id>', methods=['GET'])
 def buscar_usuario(usuario_id):
